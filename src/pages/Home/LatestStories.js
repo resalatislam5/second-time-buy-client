@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LatestStory from '../../ass/LatestStories.png'
+import img1 from '../../ass/image 15.png'
 import CommonButton from '../../Components/Button/CommonButton';
 
 const LatestStories = () => {
@@ -23,7 +24,7 @@ const LatestStories = () => {
             {
                 [...Array(3)].map(e => <div  className='w-[509px] h-[425px] hover:shadow-l grounded-xl Electric shadow-xl rounded-xl'>
                     <div className='relative'>
-                        <img src={LatestStory} className='h-[220px] w-full' alt="" />
+                        <img src={img1} className='h-[220px] w-full' alt="" />
                         <div className='w-20 h-24 bg-white absolute top-0 right-8 rounded-b-lg text-center items-center flex'>
                             <p className="">24 Feb 2022</p>
                         </div>
