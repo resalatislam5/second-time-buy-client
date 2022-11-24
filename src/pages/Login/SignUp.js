@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
+import { AuthContext } from '../../contexts/AuthProvider';
+import toast from 'react-hot-toast';
+import { AuthToken } from '../../api/user';
 
 const SignUp = () => {
     const [seller, setSeller] = useState('user')
     const [images,setImages] = useState(null)
+    const {SignUpEmail,updateUser} = useContext(AuthContext)
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -19,6 +23,7 @@ const SignUp = () => {
             role: seller,
             image:images
         }
+        
         const data = new FormData()
         data.append('image', image)
         fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbd_key}`,{
@@ -28,6 +33,22 @@ const SignUp = () => {
         .then(res=> res.json())
         .then(data =>{
             setImages(data.data.url)
+            console.log(data.data.url)
+            //signup
+        SignUpEmail(email,password)
+        .then(result =>{
+            const userEmail = result.user.email
+            // update name
+            updateUser(name,data.data.url)
+            .then(() => {
+                AuthToken(userEmail,user)
+         })
+
+        }).catch(error =>{
+            console.log(error)
+            const message = error.message;
+            return toast.error(message)
+        })
             
         }).catch(err => console.log(err))
     }
