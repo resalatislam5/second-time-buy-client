@@ -6,7 +6,7 @@ import '../Home.css'
 
 const Microbus = () => {
     const {data : microbus = []} = useQuery({
-        queryKey: ['electriBikes'],
+        queryKey: ['microbus'],
         queryFn: async () =>{
             const res = await fetch('http://localhost:5000/microbus');
             const data = await res.json();
@@ -21,7 +21,7 @@ const Microbus = () => {
         </div>
         <div className='grid grid-cols-4 absolute'>
             {
-                microbus.slice(0,4).map(e => <div  className='w-[400px] h-[448px] hover:h-[512px] hover:bg-white hover:shadow-lg p-4 bg-[#F9F9F9] rounded-xl Electric '>
+                microbus.slice(0,4).map(e => <div  className='w-[400px] h-[448px] hover:h-[512px] hover:bg-white hover:shadow-lg p-4 bg-[#F9F9F9] rounded-xl Electric' key={e._id}>
                     <div className='mb-10 mt-7'>
                         <img className='w-64 h-64' src={e.img} alt="" />
                     </div>
