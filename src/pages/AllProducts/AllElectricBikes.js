@@ -28,7 +28,6 @@ const AllElectricBikes = () => {
                             <p className='text-[#676767] font-semibold text-lg'>${e.resalePrice}</p>
                             <Link to={`/product-details/${e._id}`} ><button className="btn bg-[#1A2A49] w-full mt-6 hidden Electric-btn">Add to cart</button></Link>
                         </div>
-                        
                     </div>)
                 }
             </div>

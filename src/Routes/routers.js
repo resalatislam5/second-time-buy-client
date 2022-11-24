@@ -1,6 +1,7 @@
 import Main from "../Layout/Main";
 import AllElectricBikes from "../pages/AllProducts/AllElectricBikes";
 import AllLuxuryCar from "../pages/AllProducts/AllLuxuryCar";
+import AllMicrobus from "../pages/AllProducts/AllMicrobus";
 import Home from "../pages/Home/Home";
 import ProductDetail from "../pages/ProductDetails/ProductDetail";
 
@@ -27,7 +28,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/allLuxuryCar',
                 element:<AllLuxuryCar />
-            }
+            },
+            {
+                path: '/allmicrobus',
+                element:<AllMicrobus />
+            },
         ]
     }
 ])
