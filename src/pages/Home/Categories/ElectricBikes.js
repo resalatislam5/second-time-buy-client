@@ -12,7 +12,6 @@ const ElectricBikes = () => {
             return data;
         }
     })
-    console.log(electriBikes)
     return (
         <div>
             <section className='mx-40 my-28 h-[600px]'>
