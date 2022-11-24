@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
@@ -7,7 +8,8 @@ import { AuthToken } from '../../api/user';
 const SignUp = () => {
     const [seller, setSeller] = useState('user')
     const [images,setImages] = useState(null)
-    const {SignUpEmail,updateUser} = useContext(AuthContext)
+    const {SignUpEmail,updateUser,handleGoogleLogin} = useContext(AuthContext)
+    const GoogleProvider = new GoogleAuthProvider()
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -51,6 +53,26 @@ const SignUp = () => {
         })
             
         }).catch(err => console.log(err))
+
+    }
+    // gmail
+    const handleGoogleSignIn = () =>{
+        handleGoogleLogin(GoogleProvider)
+        .then((result) => {
+            const user = result.user;
+            const userDetails = {
+                name: user.displayName,
+                email:user.email,
+                role: seller,
+                image:user.photoURL,
+            }
+            console.log(userDetails)
+            AuthToken(user.email,userDetails)
+            toast.success('Login successfully')
+          }).catch((error) => {
+            const errorMessage = error.message;
+            toast.error(errorMessage)
+          });
     }
     return (
         <div className='min-h-[50vh] mb-[1%]'>
@@ -69,7 +91,7 @@ const SignUp = () => {
                     <input className='border p-3 btn' type="submit" value="Register" />
                 </form>
                 <div className='flex justify-center mt-5 gap-5 text-3xl text-[#f75353]'>
-                    <button  className='cursor-pointer'><FaGoogle /></button>
+                    <button onClick={handleGoogleSignIn}  className='cursor-pointer'><FaGoogle /></button>
                     <button className='cursor-pointer'><FaFacebook /></button>
                 </div>
             </div>
