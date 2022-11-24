@@ -3,6 +3,8 @@ import AllElectricBikes from "../pages/AllProducts/AllElectricBikes";
 import AllLuxuryCar from "../pages/AllProducts/AllLuxuryCar";
 import AllMicrobus from "../pages/AllProducts/AllMicrobus";
 import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/Login/SignUp";
 import ProductDetail from "../pages/ProductDetails/ProductDetail";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -32,6 +34,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/allmicrobus',
                 element:<AllMicrobus />
+            },
+            {
+                path: '/login',
+                element:<Login />
+            },
+            {
+                path: '/signup',
+                element:<SignUp />
             },
         ]
     }
