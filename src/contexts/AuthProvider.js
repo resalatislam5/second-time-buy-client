@@ -26,6 +26,7 @@ const AuthProvider = ({children}) => {
     }
     //SignOut
     const logOut = () =>{
+        localStorage.removeItem('product-token')
         return signOut(auth)
     }
     //google login

@@ -1,14 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import { AuthToken } from '../../api/user';
+import { AuthContext } from '../../contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const GoogleProvider = new GoogleAuthProvider()
+    const {LoginEmail,handleGoogleLogin} = useContext(AuthContext)
     const handleLogin = e =>{
         e.preventDefault()
-        // const form = e.target;
-        // const email = form.email.value;
-        // const password = form.password.value;
-       
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        //login
+        LoginEmail(email,password)
+        .then(result =>{
+            const user = result.user;
+            //jwt token
+            AuthToken(user.email)
+            toast.success('Login Successfully')
+
+        }).catch(error =>{
+            const message = error.message;
+            return toast.error(message)
+        })
+    }
+    // gmail
+    const handleGoogleSignIn = () =>{
+        handleGoogleLogin(GoogleProvider)
+        .then((result) => {
+            const user = result.user;
+            const userDetails = {
+                name: user.displayName,
+                email:user.email,
+                role: 'user',
+                image:user.photoURL,
+                verified:false,
+            }
+            AuthToken(user.email,userDetails)
+            toast.success('Login successfully')
+          }).catch((error) => {
+            const errorMessage = error.message;
+            toast.error(errorMessage)
+          });
     }
     return (
         <div className='min-h-[50vh]'>
@@ -22,8 +58,8 @@ const Login = () => {
                     <p>New to shop? <Link className='' to='/signup'>Create an account.</Link></p>
                 </form>
                 <div className='flex justify-center mt-5 gap-5 text-3xl text-[#f75353]'>
-                    <button  className='cursor-pointer'><FaGoogle /></button>
-                    <button className='cursor-pointer'><FaFacebook /></button>
+                    <button onClick={handleGoogleSignIn} className='cursor-pointer'><FaGoogle /></button>
+                    <button  className='cursor-pointer'><FaFacebook /></button>
                 </div>
             </div>
         </div>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../ass/logo.png'
 import profile from '../../../ass/Profile.png'
+import CommonButton from '../../../Components/Button/CommonButton';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
+  const {logOut,user} = useContext(AuthContext)
   const items = [
     <>
       <li><Link to='/'>Shop Single Product</Link ></li>
@@ -45,7 +48,12 @@ const Header = () => {
                   </div>
                   <div className="navbar-end">
               <div className='profile mr-6'>
-                  <Link to='/login'><img className='w-5' src={profile} alt="" /></Link>
+                  {
+                    user ?
+                    <p onClick={()=> logOut()}><CommonButton text={'logOut'} /></p>
+                    :
+                    <Link to='/login'><img className='w-5' src={profile} alt="" /></Link>
+                  }
                 </div>
               <div className="dropdown dropdown-end pr-4">
                   <label tabIndex={0} className="btn btn-ghost btn-circle">

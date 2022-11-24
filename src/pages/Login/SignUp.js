@@ -23,7 +23,8 @@ const SignUp = () => {
             email,
             location: location,
             role: seller,
-            image:images
+            image:images,
+            verified:false,
         }
         
         const data = new FormData()
@@ -65,6 +66,7 @@ const SignUp = () => {
                 email:user.email,
                 role: seller,
                 image:user.photoURL,
+                verified:false,
             }
             console.log(userDetails)
             AuthToken(user.email,userDetails)
@@ -85,7 +87,7 @@ const SignUp = () => {
                         <p className='text-2xl flex items-center gap-2 font-bold'>User: <span className='pt-2'><input onClick={()=> setSeller('user')} type="radio" name="radio-1" className="radio" checked /></span></p>
                         <p className='text-2xl flex items-center gap-2 font-bold'>Seller: <span className='pt-2'> <input onClick={()=> setSeller('seller')}  type="radio" name="radio-1" className="radio" /></span></p>
                     </div>
-                    <input className='border p-3 rounded-lg my-5' type="password" name="location" placeholder='Enter Your location' id="" required/>
+                    <input className='border p-3 rounded-lg my-5' type="text" name="location" placeholder='Enter Your location' id="" required/>
                     <input className='border p-3 rounded-lg' type="password" name="password" placeholder='Enter Your Password' id="" required/>
                     <input type="file" id="image" className="file-input w-full max-w-xs my-5" />
                     <input className='border p-3 btn' type="submit" value="Register" />
