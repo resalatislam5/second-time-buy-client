@@ -1,5 +1,6 @@
 import Main from "../Layout/Main";
 import AllElectricBikes from "../pages/AllProducts/AllElectricBikes";
+import AllLuxuryCar from "../pages/AllProducts/AllLuxuryCar";
 import Home from "../pages/Home/Home";
 import ProductDetail from "../pages/ProductDetails/ProductDetail";
 
@@ -20,8 +21,12 @@ export const routes = createBrowserRouter([
                 element:<ProductDetail />
             },
             {
-                path: 'allbikes',
+                path: '/allbikes',
                 element:<AllElectricBikes />
+            },
+            {
+                path: '/allLuxuryCar',
+                element:<AllLuxuryCar />
             }
         ]
     }

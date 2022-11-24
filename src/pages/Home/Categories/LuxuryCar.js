@@ -16,7 +16,7 @@ const LuxuryCar = () => {
         <section className='mx-40 my-28 h-[600px]'>
         <div className='flex justify-between mb-12'>
             <h2 className="text-[#100707] text-4xl font-bold">Luxury Car</h2>
-            <p className='text-[#EC6861] text-lg'>View all</p>
+            <Link to='/allLuxuryCar' className='text-[#EC6861] text-lg'>View all</Link>
         </div>
         <div className='grid grid-cols-4 absolute'>
             {
