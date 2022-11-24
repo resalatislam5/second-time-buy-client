@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Footer from '../pages/Sheard/Footer/Footer';
 import Header from '../pages/Sheard/Header/Header';
 
 
@@ -8,6 +9,7 @@ const Main = () => {
         <div>
             <Header />
             <Outlet />
+            <Footer />
         </div>
     );
 };
