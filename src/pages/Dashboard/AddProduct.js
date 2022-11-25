@@ -22,7 +22,7 @@ const AddProduct = () => {
             resalePrice,
             yearsofuse,
             categoryname,
-            images,
+            img:images,
             email:user.email
         }
         console.log(product)
@@ -34,21 +34,24 @@ const AddProduct = () => {
         })
         .then(res=> res.json())
         .then(data =>{
-            setImages(data.data.url)
-            fetch(`http://localhost:5000/products`,{
-                method: 'POST',
-                headers:{
-                    'content-type':'application/json'
-                },
-                body: JSON.stringify(product)
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.acknowledged){
-                    toast.success('product add successfully')
-                }
-                console.log(data)
-            })
+            console.log(data.success)
+            if(data.success){
+                setImages(data.data.url)
+                fetch(`http://localhost:5000/products`,{
+                    method: 'POST',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body: JSON.stringify(product)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.acknowledged){
+                        toast.success('product add successfully')
+                    }
+                    console.log(data)
+                })
+            }
         }).catch(error =>{
             console.log(error)
             const message = error.message;
