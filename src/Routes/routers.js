@@ -8,6 +8,7 @@ import AddProduct from "../pages/Dashboard/AddProduct";
 import AllUser from "../pages/Dashboard/AllUser";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyOrders from "../pages/Dashboard/MyOrders";
+import MyProducts from "../pages/Dashboard/MyProducts";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
@@ -76,6 +77,10 @@ export const routes = createBrowserRouter([
             {
                 path:'/dashboard/alluser',
                 element: <PrivateRoutes><AllUser /></PrivateRoutes>
+            },
+            {
+                path:'/dashboard/myproducts',
+                element: <PrivateRoutes><MyProducts /></PrivateRoutes>
             }
         ]
     },

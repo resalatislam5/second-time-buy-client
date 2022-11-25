@@ -58,6 +58,7 @@ const Modal = ({name,email,itemName,price,image}) => {
                         <input type="text" onChange={(e)=> setLocation(e.target.value)} name='meetingLocation' className='bg-gray-300 py-3 px-6 rounded-xl mt-2 w-full'  placeholder='Enter your location' required/>
                     </div>
                     <div className="modal-action">
+                    <label  htmlFor="my-modal" className="btn">Close</label>
                     <label onClick={handleSubmit} type='submit' htmlFor="my-modal" className="btn">Booking</label>
                     </div>
                     </form>

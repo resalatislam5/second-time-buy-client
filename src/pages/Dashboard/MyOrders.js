@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const MyOrders = () => {
     const {user} = useContext(AuthContext)
-    const {data:myOrders,isFetching }= useQuery({
+    const {data:myOrders,isLoading }= useQuery({
         queryKey:['booking'],
         queryFn: async() =>{
             const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`);
@@ -12,9 +12,10 @@ const MyOrders = () => {
             return data
         }
     })
-    if(isFetching ){
+    if(isLoading){
         return
     }
+    console.log(myOrders)
     return (
         <div className='px-20'>
             <h2 className="text-2xl font-bold my-5">MyOrder</h2>
@@ -30,12 +31,12 @@ const MyOrders = () => {
     </thead>
     <tbody>
       {
-         myOrders.result.map(order => <tr>
-            <td key={order._id}>
+         myOrders.result.map(order => <tr key={order._id}>
+            <td>
               <div className="flex items-center space-x-3">
                 <div className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
-                    <img src={user?.image} alt={order?.name} />
+                    <img src={order?.image} alt={order?.name} />
                   </div>
                 </div>
               </div>

@@ -5,15 +5,15 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const AllUser = () => {
     const {user} = useContext(AuthContext)
-    const {data:users,refetch,isFetching}= useQuery({
-        queryKey:['booking'],
+    const {data:users,refetch,isLoading}= useQuery({
+        queryKey:['users'],
         queryFn: async() =>{
             const res = await fetch(`http://localhost:5000/users?email=${user?.email}`);
             const data = res.json()
             return data
         }
     })
-    if(isFetching){
+    if(isLoading){
       return
   }
     const handleDelete = id =>{
