@@ -27,7 +27,7 @@ const LuxuryCar = () => {
                     <div>
                         <h3 className="text-[#100707] font-bold text-2xl">{e.name}</h3>
                         <p className='text-[#676767] font-semibold text-lg'>{e.resalePrice}</p>
-                        <Link to={`/product-details`} ><button className="btn bg-[#1A2A49] w-full mt-6 hidden Electric-btn">Add to cart</button></Link>
+                        <Link to={`/product-details/${e._id}`} ><button className="btn bg-[#1A2A49] w-full mt-6 hidden Electric-btn">Add to cart</button></Link>
                     </div>
                     
                 </div>)

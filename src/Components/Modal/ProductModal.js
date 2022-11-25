@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Modal = ({name,email,itemName,price}) => {
+const Modal = ({name,email,itemName,price,image}) => {
     const [number,setNumber] = useState()
     const [location,setLocation] = useState()
     const navigate = useNavigate()
@@ -17,7 +17,8 @@ const Modal = ({name,email,itemName,price}) => {
                 itemName: itemName,
                 price: price,
                 number: number,
-                location: location
+                location: location,
+                image: image
             }
         });
         toast.success('Booking successfully')

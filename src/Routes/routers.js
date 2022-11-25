@@ -1,8 +1,13 @@
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import AllElectricBikes from "../pages/AllProducts/AllElectricBikes";
 import AllLuxuryCar from "../pages/AllProducts/AllLuxuryCar";
 import AllMicrobus from "../pages/AllProducts/AllMicrobus";
 import Blog from "../pages/Blog/Blog";
+import AddProduct from "../pages/Dashboard/AddProduct";
+import AllUser from "../pages/Dashboard/AllUser";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import MyOrders from "../pages/Dashboard/MyOrders";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
@@ -50,6 +55,28 @@ export const routes = createBrowserRouter([
                 path: '/blog',
                 element:<Blog />
             },
+            {
+                path: '/dashboard',
+                element:<Dashboard />
+            },
+        ]
+    },
+    {
+        path:'/dashboard',
+        element: <DashboardLayout />,
+        children:[
+            {
+                path:'/dashboard',
+                element: <PrivateRoutes><MyOrders /></PrivateRoutes>
+            },
+            {
+                path:'/dashboard/addProduct',
+                element: <AddProduct />
+            },
+            {
+                path:'/dashboard/alluser',
+                element: <AllUser />
+            }
         ]
     },
     {

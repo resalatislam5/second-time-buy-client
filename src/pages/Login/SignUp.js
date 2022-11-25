@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [seller, setSeller] = useState('user')
-    const [images,setImages] = useState(null)
+    const [images,setImages,setLoading] = useState(null)
     const {SignUpEmail,updateUser,handleGoogleLogin} = useContext(AuthContext)
     const GoogleProvider = new GoogleAuthProvider()
     const location = useLocation()
@@ -40,7 +40,6 @@ const SignUp = () => {
         .then(res=> res.json())
         .then(data =>{
             setImages(data.data.url)
-            console.log(data.data.url)
             //signup
         SignUpEmail(email,password)
         .then(result =>{
@@ -50,6 +49,7 @@ const SignUp = () => {
             .then(() => {
                 AuthToken(userEmail,user)
                 toast.success('Login successfully')
+                setLoading(false)
                 navigate(from, { replace: true });
          })
 
@@ -77,6 +77,7 @@ const SignUp = () => {
             console.log(userDetails)
             AuthToken(user.email,userDetails)
             toast.success('Login successfully')
+            setLoading(false)
             navigate(from, { replace: true });
           }).catch((error) => {
             const errorMessage = error.message;

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
     const GoogleProvider = new GoogleAuthProvider()
-    const {LoginEmail,handleGoogleLogin} = useContext(AuthContext)
+    const {LoginEmail,handleGoogleLogin,setLoading} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || "/";
@@ -24,6 +24,7 @@ const Login = () => {
             //jwt token
             AuthToken(user.email)
             toast.success('Login Successfully')
+            setLoading(false)
             navigate(from, { replace: true });
 
         }).catch(error =>{
@@ -45,6 +46,7 @@ const Login = () => {
             }
             AuthToken(user.email,userDetails)
             toast.success('Login successfully')
+            setLoading(false)
             navigate(from, { replace: true });
           }).catch((error) => {
             const errorMessage = error.message;

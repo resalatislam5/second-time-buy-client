@@ -17,7 +17,9 @@ const Header = () => {
   const items = [
     <>
       <li><Link to='/'>Shop Single Product</Link ></li>
-                      <li><Link to='/'>Shop Home</Link ></li>
+                      { user &&
+                        <li><Link to='/dashboard'>Dashboard</Link ></li>
+                      }
                       <li tabIndex={0}>
                         <Link to='/'>
                         Adventures

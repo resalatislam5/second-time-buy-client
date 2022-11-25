@@ -17,6 +17,7 @@ const ProductDetail = () => {
                 email={user?.email}
                 itemName={name}
                 price={resalePrice}
+                image = {img}
             />
            <div className='mx-40 my-28'>
         <div className='grid grid-cols-3 gap-16'>
