@@ -13,6 +13,8 @@ const AddProduct = () => {
         const originalPrice = form.originalPrice.value;
         const resalePrice = form.resalePrice.value;
         const yearsofuse = form.yearsofuse.value;
+        const number = form.number.value;
+        const condition = form.condition.value;
         const image = form.image.files[0];
         const categoryname = form.select.value
         const product = {
@@ -22,6 +24,8 @@ const AddProduct = () => {
             resalePrice,
             yearsofuse,
             categoryname,
+            condition ,
+            number,
             img:images,
             email:user.email
         }
@@ -72,6 +76,10 @@ const AddProduct = () => {
                     </select>
                     <label className='text-xl font-semibold'>Location:</label>
                     <input className='border p-3 rounded-lg' type="text" name="location" placeholder='Enter Your location' id="" required/>
+                    <label className='text-xl font-semibold'>Condition :</label>
+                    <input className='border p-3 rounded-lg' type="text" name="condition " placeholder='Enter Product Condition ' id="" required/>
+                    <label className='text-xl font-semibold'>number :</label>
+                    <input className='border p-3 rounded-lg' type="text" name="number " placeholder='Enter Your Number' id="" required/>
                     <label className='text-xl font-semibold'>Original Price:</label>
                     <input className='border p-3 rounded-lg ' type="number" name="originalPrice" placeholder='Enter product Original Price' id="" required/>
                     <label className='text-xl font-semibold'>Resale Price</label>
