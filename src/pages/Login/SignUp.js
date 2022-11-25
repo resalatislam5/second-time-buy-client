@@ -8,8 +8,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [seller, setSeller] = useState('user')
-    const [images,setImages,setLoading] = useState(null)
-    const {SignUpEmail,updateUser,handleGoogleLogin} = useContext(AuthContext)
+    const [images,setImages] = useState(null)
+    const {SignUpEmail,updateUser,handleGoogleLogin,setLoading} = useContext(AuthContext)
     const GoogleProvider = new GoogleAuthProvider()
     const location = useLocation()
     const navigate = useNavigate()
