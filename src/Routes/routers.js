@@ -75,7 +75,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/dashboard/alluser',
-                element: <AllUser />
+                element: <PrivateRoutes><AllUser /></PrivateRoutes>
             }
         ]
     },

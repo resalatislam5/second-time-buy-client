@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const MyOrders = () => {
     const {user} = useContext(AuthContext)
-    const {data:myOrders = []}= useQuery({
+    const {data:myOrders,isFetching }= useQuery({
         queryKey:['booking'],
         queryFn: async() =>{
             const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`);
@@ -12,6 +12,9 @@ const MyOrders = () => {
             return data
         }
     })
+    if(isFetching ){
+        return
+    }
     return (
         <div className='px-20'>
             <h2 className="text-2xl font-bold my-5">MyOrder</h2>
@@ -28,7 +31,7 @@ const MyOrders = () => {
     <tbody>
       {
          myOrders.result.map(order => <tr>
-            <td>
+            <td key={order._id}>
               <div className="flex items-center space-x-3">
                 <div className="avatar">
                   <div className="mask mask-squircle w-12 h-12">
