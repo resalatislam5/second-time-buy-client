@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
 import { Link, useLoaderData } from 'react-router-dom';
+import Modal from '../../Components/Modal/ProductModal';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 
 const ProductDetail = () => {
     const product = useLoaderData();
+    const {user} = useContext(AuthContext)
     const {name,img,location,originalPrice,resalePrice,yearsofuse,verified} = product;
-    console.log(product)
     return (
         <section>
+            <Modal name={user?.displayName}
+                email={user?.email}
+                itemName={name}
+                price={resalePrice}
+            />
            <div className='mx-40 my-28'>
         <div className='grid grid-cols-3 gap-16'>
             <div className="col-span-2 border rounded-lg p-5 flex items-center">
@@ -47,7 +54,7 @@ const ProductDetail = () => {
                     }
                 </div>
             <div className='mt-5'>
-            <Link className="btn bg-[#EC6861] px-5 text-xl hover:bg-[#f57871] border-0 w-full" to='/'>Buy Now</Link>
+            <label htmlFor="my-modal" className="btn bg-[#EC6861] px-5 text-xl hover:bg-[#f57871] border-0 w-full" to='/'>Buy Now</label>
             <Link className="btn btn-outline text-[#1A2A49]  px-5 text-xl  w-full mt-5" to='/'>WhishList</Link>
             </div>
             </div>
