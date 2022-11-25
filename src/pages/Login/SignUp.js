@@ -4,12 +4,16 @@ import { FaFacebook,FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import { AuthToken } from '../../api/user';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [seller, setSeller] = useState('user')
     const [images,setImages] = useState(null)
     const {SignUpEmail,updateUser,handleGoogleLogin} = useContext(AuthContext)
     const GoogleProvider = new GoogleAuthProvider()
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -45,6 +49,8 @@ const SignUp = () => {
             updateUser(name,data.data.url)
             .then(() => {
                 AuthToken(userEmail,user)
+                toast.success('Login successfully')
+                navigate(from, { replace: true });
          })
 
         }).catch(error =>{
@@ -71,6 +77,7 @@ const SignUp = () => {
             console.log(userDetails)
             AuthToken(user.email,userDetails)
             toast.success('Login successfully')
+            navigate(from, { replace: true });
           }).catch((error) => {
             const errorMessage = error.message;
             toast.error(errorMessage)

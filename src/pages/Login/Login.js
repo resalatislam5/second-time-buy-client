@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthToken } from '../../api/user';
 import { AuthContext } from '../../contexts/AuthProvider';
 import toast from 'react-hot-toast';
@@ -9,6 +9,9 @@ import toast from 'react-hot-toast';
 const Login = () => {
     const GoogleProvider = new GoogleAuthProvider()
     const {LoginEmail,handleGoogleLogin} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
     const handleLogin = e =>{
         e.preventDefault()
         const form = e.target;
@@ -21,6 +24,7 @@ const Login = () => {
             //jwt token
             AuthToken(user.email)
             toast.success('Login Successfully')
+            navigate(from, { replace: true });
 
         }).catch(error =>{
             const message = error.message;
@@ -41,6 +45,7 @@ const Login = () => {
             }
             AuthToken(user.email,userDetails)
             toast.success('Login successfully')
+            navigate(from, { replace: true });
           }).catch((error) => {
             const errorMessage = error.message;
             toast.error(errorMessage)

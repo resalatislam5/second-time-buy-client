@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import logo from '../../../ass/logo.png'
 import profile from '../../../ass/Profile.png'
@@ -7,6 +8,12 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
   const {logOut,user} = useContext(AuthContext)
+  const handleLogOut= () =>{
+    logOut()
+    .then(()=>{
+        toast.success('logout Successfully')
+    })
+}
   const items = [
     <>
       <li><Link to='/'>Shop Single Product</Link ></li>
@@ -22,7 +29,7 @@ const Header = () => {
                         </ul>
                       </li>
                       <li><Link to='/'>Events</Link ></li>
-                      <li><Link to='/'>Blog</Link ></li>
+                      <li><Link to='/blog'>Blog</Link ></li>
                       <li><Link to='/'>Contact us</Link ></li>
     </>
   ]
@@ -50,7 +57,7 @@ const Header = () => {
               <div className='profile mr-6'>
                   {
                     user ?
-                    <p onClick={()=> logOut()}><CommonButton text={'logOut'} /></p>
+                    <p onClick={handleLogOut}><CommonButton text={'logOut'} /></p>
                     :
                     <Link to='/login'><img className='w-5' src={profile} alt="" /></Link>
                   }
