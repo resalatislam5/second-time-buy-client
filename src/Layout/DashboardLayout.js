@@ -9,7 +9,11 @@ const DashboardLayout = () => {
       const {data:UserRole,isLoading }= useQuery({
         queryKey:['email'],
         queryFn: async() =>{
-          const res = await fetch(`https://second-time-bye-server.vercel.app/userrole?email=${user?.email}`);
+          const res = await fetch(`https://second-time-bye-server.vercel.app/userrole?email=${user?.email}`,{
+            headers:{
+              authorization:`bearer ${localStorage.getItem('product-token')}`
+            }
+          });
           const data = res.json()
           return data
         }

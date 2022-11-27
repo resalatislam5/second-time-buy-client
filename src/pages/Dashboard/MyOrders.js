@@ -8,7 +8,11 @@ const MyOrders = () => {
     const {data:myOrders,isLoading }= useQuery({
         queryKey:['booking'],
         queryFn: async() =>{
-            const res = await fetch(`https://second-time-bye-server.vercel.app/booking?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/booking?email=${user?.email}`,{
+              headers:{
+                authorization:`bearer ${localStorage.getItem('product-token')}`
+              }
+            });
             const data = res.json()
             return data
         }
