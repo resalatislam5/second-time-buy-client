@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='mx-28'>
+        <div className='lg:mx-28 mx-5'>
             <div className="card  bg-base-100 shadow-xl my-5">
                 <div className="card-body">
                     <h2 className="card-title">1.What are the different ways to manage a state in a React application?</h2>

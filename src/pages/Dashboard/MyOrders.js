@@ -21,7 +21,7 @@ const MyOrders = () => {
       return <div className='flex justify-center h-[70vh] items-center'><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     }
     return (
-        <div className='px-20'>
+        <div className='lg:mx-20 mx-5'>
             <h2 className="text-2xl font-bold my-5">MyOrder</h2>
             <div className="overflow-x-auto w-full">
   <table className="table w-full">

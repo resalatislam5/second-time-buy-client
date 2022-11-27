@@ -43,7 +43,7 @@ const MyProducts = () => {
         })
     }
     return (
-        <div className='mx-20'>
+        <div className='lg:mx-20 mx-5'>
             <h1 className="text-2xl font-bold my-5">My Products: {myproducts.length}</h1>
             <div className="overflow-x-auto w-full">
           <table className="table w-full">
