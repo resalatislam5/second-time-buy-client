@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [seller, setSeller] = useState('user')
-    const [images,setImages] = useState(null)
+    // const [images,setImages] = useState(null)
     const {SignUpEmail,updateUser,handleGoogleLogin,setLoading} = useContext(AuthContext)
     const GoogleProvider = new GoogleAuthProvider()
     const location = useLocation()
@@ -21,16 +21,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const location = form.location.value;
-        const image = form.image.files[0];
-        const user = {
-            name: name,
-            email,
-            location: location,
-            role: seller,
-            image:images,
-            verified:false,
-        }
-        
+        const image = form.image.files[0]; 
         const data = new FormData()
         data.append('image', image)
         fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbd_key}`,{
@@ -40,7 +31,16 @@ const SignUp = () => {
         .then(res=> res.json())
         .then(data =>{
             if(data.success){
-               setImages(data.data.url)
+            //    setImages(data.data.url)
+               const user = {
+                name: name,
+                email,
+                location: location,
+                role: seller,
+                image:data.data.url,
+                verified:false,
+            }
+            
              //signup
         SignUpEmail(email,password)
         .then(result =>{

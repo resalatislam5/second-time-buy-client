@@ -83,7 +83,7 @@ const AllSeller = () => {
         <th>{ u?.user?.verified === false  ?
             <button onClick={()=> handleVerify(u._id)} className="btn btn-success btn-xs">verify</button>
             :
-            <button className="btn btn-success btn-xs btn-disabled">verify</button>
+            <button className="btn btn-success btn-xs btn-disabled">verify successfully</button>
             }</th>
         <th> <button onClick={()=> handleDelete(u._id)} className="btn btn-warning btn-xs">delete</button></th>
       </tr>

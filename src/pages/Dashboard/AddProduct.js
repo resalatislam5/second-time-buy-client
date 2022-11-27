@@ -1,12 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddProduct = () => {
-    const [images,setImages] = useState(null)
     const {user} = useContext(AuthContext)
+    const {data:sellerVerify,refetch,isLoading}= useQuery({
+        queryKey:['sellerVerify'],
+        queryFn: async() =>{
+            const res = await fetch(`http://localhost:5000/sellerVerify?email=${user?.email}`);
+            const data = res.json()
+            return data
+        }
+    })
     const navigate = useNavigate()
+    if(isLoading){
+        return
+    }
+    console.log()
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -19,19 +31,6 @@ const AddProduct = () => {
         const condition = form.condition.value;
         const image = form.image.files[0];
         const categoryname = form.select.value
-        const product = {
-            name: name,
-            location: location,
-            originalPrice,
-            resalePrice,
-            yearsofuse,
-            categoryname,
-            condition ,
-            number,
-            img:images,
-            email:user.email
-        }
-        console.log(product)
         const data = new FormData()
         data.append('image', image)
         fetch(`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbd_key}`,{
@@ -40,9 +39,20 @@ const AddProduct = () => {
         })
         .then(res=> res.json())
         .then(data =>{
-            console.log(data.success)
             if(data.success){
-                setImages(data.data.url)
+                const product = {
+                    name: name,
+                    location: location,
+                    originalPrice,
+                    resalePrice,
+                    yearsofuse,
+                    categoryname,
+                    condition ,
+                    number,
+                    img:data.data.url,
+                    email:user.email,
+                    verified:sellerVerify.user.verified,
+                }
                 fetch(`http://localhost:5000/products`,{
                     method: 'POST',
                     headers:{
