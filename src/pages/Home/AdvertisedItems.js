@@ -18,12 +18,12 @@ const AdvertisedItems = () => {
     return (
         <div>
             { advertise.length > 0 &&
-        <section className='mx-40 my-28 h-[600px]'>
+        <section className='lg:mx-40 my-28 h-[600px] mx-5'>
             <div className='flex justify-between mb-12'>
-                <h2 className="text-[#100707] text-4xl font-bold">Advertised items</h2>
+                <h2 className="text-[#100707] lg:text-4xl font-bold text-2xl">Advertised items</h2>
                 <Link to='/alladvertise' className='text-[#EC6861] text-lg'>View all</Link>
             </div>
-            <div className='grid grid-cols-4 absolute'>
+            <div className='grid xl:grid-cols-4 absolute lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
                 {
                     advertise.slice(0,4).map(e => <div  className='w-[400px] h-[448px] hover:h-[512px] hover:bg-white hover:shadow-lg p-4 bg-[#F9F9F9] rounded-xl Electric '>
                         <div className='mb-10 mt-7 flex justify-center'>
