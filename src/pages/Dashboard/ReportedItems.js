@@ -31,7 +31,7 @@ const ReportedItems = () => {
     console.log(reportedProduct)
     return (
         <div className='mx-20'>
-            <h1 className="text-2xl font-bold my-5">My Products: {}</h1>
+            <h1 className="text-2xl font-bold my-5">Reported Items</h1>
             <div className="overflow-x-auto w-full">
           <table className="table w-full">
                 <thead>

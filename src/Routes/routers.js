@@ -6,6 +6,7 @@ import AllLuxuryCar from "../pages/AllProducts/AllLuxuryCar";
 import AllMicrobus from "../pages/AllProducts/AllMicrobus";
 import Blog from "../pages/Blog/Blog";
 import AddProduct from "../pages/Dashboard/AddProduct";
+import AllSeller from "../pages/Dashboard/AllSeller";
 import AllUser from "../pages/Dashboard/AllUser";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyOrders from "../pages/Dashboard/MyOrders";
@@ -87,6 +88,10 @@ export const routes = createBrowserRouter([
             {
                 path:'/dashboard/report',
                 element: <PrivateRoutes><ReportedItems /></PrivateRoutes>
+            },
+            {
+                path:'/dashboard/seller',
+                element: <PrivateRoutes><AllSeller /></PrivateRoutes>
             }
         ]
     },

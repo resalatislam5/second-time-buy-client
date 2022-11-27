@@ -61,7 +61,6 @@ const AllUser = () => {
         <td>{u?.user?.location}</td>
         <td>{u?.user?.role}</td>
         <th>
-              {/* <button onClick={()=> handleDelete(u._id)} className="btn btn-success btn-xs">delete</button> */}
               <button onClick={()=> handleDelete(u._id)} className="btn btn-success btn-xs">delete</button>
             </th>
       </tr>
