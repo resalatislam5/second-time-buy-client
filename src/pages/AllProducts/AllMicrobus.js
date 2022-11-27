@@ -6,7 +6,7 @@ const AllMicrobus = () => {
     const {data : microbus = []} = useQuery({
         queryKey: ['microbus'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/microbus');
+            const res = await fetch('https://second-time-bye-server.vercel.app/microbus');
             const data = await res.json();
             return data;
         }

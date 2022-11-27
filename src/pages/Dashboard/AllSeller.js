@@ -8,7 +8,7 @@ const AllSeller = () => {
     const {data:sellers,refetch,isLoading}= useQuery({
         queryKey:['sellers'],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/sellers?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/sellers?email=${user?.email}`);
             const data = res.json()
             return data
         }
@@ -16,11 +16,10 @@ const AllSeller = () => {
     if(isLoading){
       return
   }
-  console.log(sellers)
     const handleDelete = id =>{
       const confirm = window.confirm()
       if(confirm){
-        fetch(`http://localhost:5000/user/${id}`,{
+        fetch(`https://second-time-bye-server.vercel.app/user/${id}`,{
         method: 'DELETE'
       })
       .then(res => res.json())
@@ -33,10 +32,9 @@ const AllSeller = () => {
       }
     }
     const handleVerify = id =>{
-        console.log(id)
       const confirm = window.confirm()
       if(confirm){
-        fetch(`http://localhost:5000/sellers/${id}`,{
+        fetch(`https://second-time-bye-server.vercel.app/sellers/${id}`,{
         method: 'PUT'
       })
       .then(res => res.json())
@@ -73,13 +71,7 @@ const AllSeller = () => {
             </div>
           </div>
         </td>
-        {
-            console.log(u?.user)
-        }
         <td>{u?.user?.name}</td>
-        {
-            console.log(u?.user?.verified)
-        }
         <th>{ u?.user?.verified === false  ?
             <button onClick={()=> handleVerify(u._id)} className="btn btn-success btn-xs">verify</button>
             :

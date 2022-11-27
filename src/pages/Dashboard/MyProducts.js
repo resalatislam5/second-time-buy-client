@@ -9,7 +9,7 @@ const MyProducts = () => {
     const {data:myproducts,isLoading,refetch}= useQuery({
         queryKey:['products'],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/myproducts?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/myproducts?email=${user?.email}`);
             const data = res.json()
             return data
         }
@@ -20,7 +20,7 @@ const MyProducts = () => {
     const handleDelete = id =>{
         const confirm = window.confirm()
         if(confirm){
-          fetch(`http://localhost:5000/myproduct/${id}`,{
+          fetch(`https://second-time-bye-server.vercel.app/myproduct/${id}`,{
           method: 'DELETE'
         })
         .then(res => res.json())
@@ -33,18 +33,15 @@ const MyProducts = () => {
         }
       }
       const handleAdvertise = (id) =>{
-        console.log(id)
-        fetch(`http://localhost:5000/advertise/${id}`    ,{
+        fetch(`https://second-time-bye-server.vercel.app/advertise/${id}`    ,{
           method: 'PUT',
       })
         .then(res => res.json())
         .then(data =>{
-            console.log(data)
             refetch()
             toast.success('Advertise successfully')
         })
     }
-    console.log(myproducts)
     return (
         <div className='mx-20'>
             <h1 className="text-2xl font-bold my-5">My Products: {myproducts.length}</h1>

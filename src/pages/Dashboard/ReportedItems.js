@@ -8,7 +8,7 @@ const ReportedItems = () => {
     const {data : reportedProduct = [],refetch} = useQuery({
         queryKey: ['reportedproduct'],
         queryFn: async () =>{
-            const res = await fetch(`http://localhost:5000/reportedproduct?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/reportedproduct?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const ReportedItems = () => {
     const handleDelete = id =>{
         const confirm = window.confirm()
         if(confirm){
-          fetch(`http://localhost:5000/myproduct/${id}`,{
+          fetch(`https://second-time-bye-server.vercel.app/myproduct/${id}`,{
           method: 'DELETE'
         })
         .then(res => res.json())
@@ -28,7 +28,6 @@ const ReportedItems = () => {
         })
         }
       }
-    console.log(reportedProduct)
     return (
         <div className='mx-20'>
             <h1 className="text-2xl font-bold my-5">Reported Items</h1>

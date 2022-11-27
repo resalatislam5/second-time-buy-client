@@ -6,7 +6,7 @@ const AllLuxuryCar = () => {
     const {data : luxuryCar = []} = useQuery({
         queryKey: ['luxury-car'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/luxury-car');
+            const res = await fetch('https://second-time-bye-server.vercel.app/luxury-car');
             const data = await res.json();
             return data;
         }

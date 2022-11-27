@@ -6,7 +6,7 @@ const AllElectricBikes = () => {
     const {data : electriBikes = []} = useQuery({
         queryKey: ['electriBikes'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/electirc-bikes');
+            const res = await fetch('https://second-time-bye-server.vercel.app/electirc-bikes');
             const data = await res.json();
             return data;
         }

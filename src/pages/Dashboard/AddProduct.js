@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddProduct = () => {
     const {user} = useContext(AuthContext)
-    const {data:sellerVerify,refetch,isLoading}= useQuery({
+    const {data:sellerVerify,isLoading}= useQuery({
         queryKey:['sellerVerify'],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/sellerVerify?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/sellerVerify?email=${user?.email}`);
             const data = res.json()
             return data
         }
@@ -18,7 +18,6 @@ const AddProduct = () => {
     if(isLoading){
         return
     }
-    console.log()
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -53,7 +52,7 @@ const AddProduct = () => {
                     email:user.email,
                     verified:sellerVerify.user.verified,
                 }
-                fetch(`http://localhost:5000/products`,{
+                fetch(`https://second-time-bye-server.vercel.app/products`,{
                     method: 'POST',
                     headers:{
                         'content-type':'application/json'
@@ -67,7 +66,7 @@ const AddProduct = () => {
                         form.reset()
                         navigate('/dashboard/myproducts')
                     }
-                    console.log(data)
+
                 })
             }
         }).catch(error =>{

@@ -8,7 +8,6 @@ import Blog from "../pages/Blog/Blog";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import AllSeller from "../pages/Dashboard/AllSeller";
 import AllUser from "../pages/Dashboard/AllUser";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import MyOrders from "../pages/Dashboard/MyOrders";
 import MyProducts from "../pages/Dashboard/MyProducts";
 import ReportedItems from "../pages/Dashboard/ReportedItems";
@@ -32,7 +31,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/product-details/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`),
+                loader: ({params}) => fetch(`https://second-time-bye-server.vercel.app/products/${params.id}`),
                 element:<PrivateRoutes><ProductDetail /></PrivateRoutes>
             },
             {

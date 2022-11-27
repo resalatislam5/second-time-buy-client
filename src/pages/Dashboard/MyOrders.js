@@ -8,7 +8,7 @@ const MyOrders = () => {
     const {data:myOrders,isLoading }= useQuery({
         queryKey:['booking'],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/booking?email=${user?.email}`);
             const data = res.json()
             return data
         }
@@ -16,7 +16,6 @@ const MyOrders = () => {
     if(isLoading){
       return <div className='flex justify-center h-[70vh] items-center'><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     }
-    console.log(myOrders)
     return (
         <div className='px-20'>
             <h2 className="text-2xl font-bold my-5">MyOrder</h2>

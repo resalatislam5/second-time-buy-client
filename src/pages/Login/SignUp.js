@@ -75,7 +75,6 @@ const SignUp = () => {
                 image:user.photoURL,
                 verified:false,
             }
-            console.log(userDetails)
             AuthToken(user.email,userDetails)
             toast.success('Login successfully')
             setLoading(false)

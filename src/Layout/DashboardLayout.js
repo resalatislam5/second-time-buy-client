@@ -9,7 +9,7 @@ const DashboardLayout = () => {
       const {data:UserRole,isLoading }= useQuery({
         queryKey:['email'],
         queryFn: async() =>{
-          const res = await fetch(`http://localhost:5000/userrole?email=${user?.email}`);
+          const res = await fetch(`https://second-time-bye-server.vercel.app/userrole?email=${user?.email}`);
           const data = res.json()
           return data
         }
@@ -18,7 +18,6 @@ const DashboardLayout = () => {
       return <div className='flex justify-center h-[70vh] items-center'><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     }
     const role = UserRole.role
-    console.log(UserRole.role)
     return (
         <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

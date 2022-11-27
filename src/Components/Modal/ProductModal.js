@@ -10,7 +10,7 @@ const Modal = ({name,email,itemName,price,image}) => {
     const handleSubmit = () =>{
         axios({
             method: 'post',
-            url: 'http://localhost:5000/booking',
+            url: 'https://second-time-bye-server.vercel.app/booking',
             data: {
                 name:name,
                 email: email,

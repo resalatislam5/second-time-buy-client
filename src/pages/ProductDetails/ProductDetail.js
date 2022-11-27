@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import Modal from '../../Components/Modal/ProductModal';
 import { AuthContext } from '../../contexts/AuthProvider';
-import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 
@@ -14,13 +13,11 @@ const ProductDetail = () => {
     const {user} = useContext(AuthContext)
     const {name,img,location,originalPrice,resalePrice,yearsofuse,verified,_id} = product;
       const handleReport = (id) =>{
-        console.log(id)
-        fetch(`http://localhost:5000/reportedproduct/${id}`    ,{
+        fetch(`https://second-time-bye-server.vercel.app/reportedproduct/${id}`    ,{
           method: 'PUT',
       })
         .then(res => res.json())
         .then(data =>{
-            console.log(data)
             toast.success('Report successfully')
         })
     }

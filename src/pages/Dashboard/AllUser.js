@@ -8,7 +8,7 @@ const AllUser = () => {
     const {data:users,refetch,isLoading}= useQuery({
         queryKey:['users'],
         queryFn: async() =>{
-            const res = await fetch(`http://localhost:5000/users?email=${user?.email}`);
+            const res = await fetch(`https://second-time-bye-server.vercel.app/users?email=${user?.email}`);
             const data = res.json()
             return data
         }
@@ -19,7 +19,7 @@ const AllUser = () => {
     const handleDelete = id =>{
       const confirm = window.confirm()
       if(confirm){
-        fetch(`http://localhost:5000/user/${id}`,{
+        fetch(`https://second-time-bye-server.vercel.app/user/${id}`,{
         method: 'DELETE'
       })
       .then(res => res.json())
