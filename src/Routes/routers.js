@@ -1,5 +1,6 @@
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import AllAdvertisedItems from "../pages/AllProducts/AllAdvertisedItems";
 import AllElectricBikes from "../pages/AllProducts/AllElectricBikes";
 import AllLuxuryCar from "../pages/AllProducts/AllLuxuryCar";
 import AllMicrobus from "../pages/AllProducts/AllMicrobus";
@@ -9,6 +10,7 @@ import AllUser from "../pages/Dashboard/AllUser";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyOrders from "../pages/Dashboard/MyOrders";
 import MyProducts from "../pages/Dashboard/MyProducts";
+import ReportedItems from "../pages/Dashboard/ReportedItems";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
@@ -45,6 +47,10 @@ export const routes = createBrowserRouter([
                 element:<AllMicrobus />
             },
             {
+                path: '/alladvertise',
+                element:<AllAdvertisedItems />
+            },
+            {
                 path: '/login',
                 element:<Login />
             },
@@ -56,10 +62,6 @@ export const routes = createBrowserRouter([
                 path: '/blog',
                 element:<Blog />
             },
-            {
-                path: '/dashboard',
-                element:<Dashboard />
-            },
         ]
     },
     {
@@ -67,7 +69,7 @@ export const routes = createBrowserRouter([
         element: <PrivateRoutes><DashboardLayout /></PrivateRoutes>,
         children:[
             {
-                path:'/dashboard',
+                path:'/dashboard/orders',
                 element: <PrivateRoutes><MyOrders /></PrivateRoutes>
             },
             {
@@ -81,6 +83,10 @@ export const routes = createBrowserRouter([
             {
                 path:'/dashboard/myproducts',
                 element: <PrivateRoutes><MyProducts /></PrivateRoutes>
+            },
+            {
+                path:'/dashboard/report',
+                element: <PrivateRoutes><ReportedItems /></PrivateRoutes>
             }
         ]
     },

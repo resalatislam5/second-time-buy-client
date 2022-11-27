@@ -39,8 +39,9 @@ const SignUp = () => {
         })
         .then(res=> res.json())
         .then(data =>{
-            setImages(data.data.url)
-            //signup
+            if(data.success){
+               setImages(data.data.url)
+             //signup
         SignUpEmail(email,password)
         .then(result =>{
             const userEmail = result.user.email
@@ -58,7 +59,7 @@ const SignUp = () => {
             const message = error.message;
             return toast.error(message)
         })
-            
+           }  
         }).catch(err => console.log(err))
 
     }

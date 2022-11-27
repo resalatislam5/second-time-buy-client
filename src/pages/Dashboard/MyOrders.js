@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
+import '../../Components/Loader/Loader.css'
 
 const MyOrders = () => {
     const {user} = useContext(AuthContext)
@@ -13,7 +14,7 @@ const MyOrders = () => {
         }
     })
     if(isLoading){
-        return
+      return <div className='flex justify-center h-[70vh] items-center'><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     }
     console.log(myOrders)
     return (
@@ -26,7 +27,7 @@ const MyOrders = () => {
         <th>Image</th>
         <th>title</th>
         <th>price</th>
-        <th>pay </th>
+        <th>pay</th>
       </tr>
     </thead>
     <tbody>

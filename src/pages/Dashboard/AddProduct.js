@@ -1,19 +1,21 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddProduct = () => {
     const [images,setImages] = useState(null)
     const {user} = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
         const location = form.location.value;
+        const number = form.mobileNumber.value;
         const originalPrice = form.originalPrice.value;
         const resalePrice = form.resalePrice.value;
         const yearsofuse = form.yearsofuse.value;
-        const number = form.number.value;
         const condition = form.condition.value;
         const image = form.image.files[0];
         const categoryname = form.select.value
@@ -52,6 +54,8 @@ const AddProduct = () => {
                 .then(data => {
                     if(data.acknowledged){
                         toast.success('product add successfully')
+                        form.reset()
+                        navigate('/dashboard/myproducts')
                     }
                     console.log(data)
                 })
@@ -77,9 +81,9 @@ const AddProduct = () => {
                     <label className='text-xl font-semibold'>Location:</label>
                     <input className='border p-3 rounded-lg' type="text" name="location" placeholder='Enter Your location' id="" required/>
                     <label className='text-xl font-semibold'>Condition :</label>
-                    <input className='border p-3 rounded-lg' type="text" name="condition " placeholder='Enter Product Condition ' id="" required/>
-                    <label className='text-xl font-semibold'>number :</label>
-                    <input className='border p-3 rounded-lg' type="text" name="number " placeholder='Enter Your Number' id="" required/>
+                    <input className='border p-3 rounded-lg' type="text" name="condition" placeholder='Enter Product Condition ' id="" required/>
+                    <label className='text-xl font-semibold'>Number :</label>
+                    <input className='border p-3 rounded-lg' type="number" name="mobileNumber" placeholder='Enter Your Number' id="" required/>
                     <label className='text-xl font-semibold'>Original Price:</label>
                     <input className='border p-3 rounded-lg ' type="number" name="originalPrice" placeholder='Enter product Original Price' id="" required/>
                     <label className='text-xl font-semibold'>Resale Price</label>

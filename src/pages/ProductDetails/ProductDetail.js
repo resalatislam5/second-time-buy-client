@@ -5,12 +5,25 @@ import { BsCheck2Circle } from "react-icons/bs";
 import { Link, useLoaderData } from 'react-router-dom';
 import Modal from '../../Components/Modal/ProductModal';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 
 const ProductDetail = () => {
     const product = useLoaderData();
     const {user} = useContext(AuthContext)
-    const {name,img,location,originalPrice,resalePrice,yearsofuse,verified} = product;
+    const {name,img,location,originalPrice,resalePrice,yearsofuse,verified,_id} = product;
+      const handleReport = (id) =>{
+        console.log(id)
+        fetch(`http://localhost:5000/reportedproduct/${id}`    ,{
+          method: 'PUT',
+      })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data)
+            toast.success('Report successfully')
+        })
+    }
     return (
         <section>
             <Modal name={user?.displayName}
@@ -56,7 +69,7 @@ const ProductDetail = () => {
                 </div>
             <div className='mt-5'>
             <label htmlFor="my-modal" className="btn bg-[#EC6861] px-5 text-xl hover:bg-[#f57871] border-0 w-full" to='/'>Buy Now</label>
-            <Link className="btn btn-outline text-[#1A2A49]  px-5 text-xl  w-full mt-5" to='/'>WhishList</Link>
+            <button className="btn btn-outline text-[#1A2A49]  px-5 text-xl  w-full mt-5" onClick={()=>handleReport(_id)}>Report</button>
             </div>
             </div>
         </div>

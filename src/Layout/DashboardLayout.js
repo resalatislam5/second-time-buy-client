@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import '../Components/Loader/Loader.css'
 
 const DashboardLayout = () => {
   const {user} = useContext(AuthContext)
       const {data:UserRole,isLoading }= useQuery({
-        queryKey:['products'],
+        queryKey:['email'],
         queryFn: async() =>{
           const res = await fetch(`http://localhost:5000/userrole?email=${user?.email}`);
           const data = res.json()
@@ -14,7 +15,7 @@ const DashboardLayout = () => {
         }
       })
     if(isLoading){
-        return
+      return <div className='flex justify-center h-[70vh] items-center'><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
     }
     const role = UserRole.role
     console.log(UserRole.role)
@@ -34,11 +35,14 @@ const DashboardLayout = () => {
             <li><Link to='/'>Home</Link></li>
             {
               role === 'user' &&
-              <li><Link to='/dashboard'>My Orders</Link></li>
+              <li><Link to='/dashboard/orders'>My Orders</Link></li>
             }
             {
               role === 'admin' &&
-            <li><Link to='/dashboard/alluser'>AllUser</Link></li>
+            <>
+              <li><Link to='/dashboard/alluser'>AllUser</Link></li>
+              <li><Link to='/dashboard/report'>Reported Items</Link></li>
+            </>
             }
             {
               role === 'seller' &&
