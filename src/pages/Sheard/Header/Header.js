@@ -44,8 +44,16 @@ const Header = () => {
                       <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                       </label>
-                      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-400 rounded-box w-52">
                         {items}
+                        <li>
+                        {
+                          user ?
+                          <p onClick={handleLogOut}><CommonButton text={'logOut'} /></p>
+                          :
+                          <Link to='/login'><img className='w-5' src={profile} alt="" /></Link>
+                        }
+                        </li>
                       </ul>
                     </div>
                     <Link to='/'><img src={logo} alt="" /></Link >
@@ -56,7 +64,7 @@ const Header = () => {
                     </ul>
                   </div>
                   <div className="navbar-end">
-              <div className='profile mr-6'>
+              <div className='profile mr-6 hidden lg:flex'>
                   {
                     user ?
                     <p onClick={handleLogOut}><CommonButton text={'logOut'} /></p>
@@ -81,7 +89,7 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
-                <Link to='/' className="btn bg-[#EC6861] px-5 text-xl hover:bg-[#f57871]">View All Adventures</Link >
+                <Link to='/' className="btn bg-[#EC6861] px-5 text-xl hover:bg-[#f57871] hidden lg:flex">View All Adventures</Link >
               </div>
             </div>
         </div>
