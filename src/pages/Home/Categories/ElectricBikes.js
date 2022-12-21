@@ -13,15 +13,14 @@ const ElectricBikes = () => {
         }
     })
     return (
-        <div>
-            <section className='lg:mx-40  lg:my-28 my-10 lg:h-[600px]'>
+            <section className='lg:mx-40 mx-5 lg:my-28 my-10 lg:h-[600px]'>
             <div className='flex justify-between mb-12'>
                 <h2 className="text-[#100707] lg:text-4xl font-bold text-2xl">Shop Electric Bikes</h2>
                 <Link to='allbikes' className='text-[#EC6861] text-lg'>View all</Link>
             </div>
             <div className='grid xl:grid-cols-4 lg:absolute lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7 lg:gap-0'>
                 {
-                    electriBikes.slice(0,4).map(e => <div  className='lg:w-[400px] mx-auto w-[23rem] lg:h-[448px] lg:hover:h-[512px] hover:bg-white hover:shadow-lg p-4 bg-[#F9F9F9] rounded-xl Electric' key={e._id}>
+                    electriBikes.slice(0,4).map(e => <div  className='lg:w-[400px] mx-auto w-80 lg:h-[448px] lg:hover:h-[512px] hover:bg-white hover:shadow-lg p-4 bg-[#F9F9F9] rounded-xl Electric' key={e._id}>
                         <div className='mb-10 mt-7 flex justify-center'>
                             <img className='w-64 h-64' src={e.img} alt="" />
                         </div>
@@ -35,7 +34,6 @@ const ElectricBikes = () => {
                 }
             </div>
         </section>
-        </div>
     );
 };
 

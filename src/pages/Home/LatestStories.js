@@ -6,11 +6,11 @@ import CommonButton from '../../Components/Button/CommonButton';
 
 const LatestStories = () => {
     return (
-        <section className='lg:mx-40 lg:my-28 my-10'>
-        <div className=' mb-12 text-center'>
+        <section className='lg:mx-40 mx-5 lg:my-28 my-10'>
+        <div className='mb-12 text-center'>
             <h2 className="text-[#100707] lg:text-4xl text-2xl font-bold">In-City Wheels Latest Stories</h2>
         </div>
-        <div className='grid lg:gap-16  lg:absolute lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
+        <div className='grid lg:gap-16  lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
             <div className="col-span-2">
                 <img src={LatestStory} alt="" />
             </div>
@@ -20,9 +20,9 @@ const LatestStories = () => {
             <Link to='/'><CommonButton text={'Watch Now'} /></Link>
             </div>
         </div>
-        <div className='grid  lg:gap-16 mt-12  lg:absolute lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
+        <div className='grid  lg:gap-16 mt-12  lg:grid-cols-3 md:grid-cols-2 grid-cols-1'>
             {
-                [...Array(3)].map(e => <div  className='lg:w-[509px] w-[23rem] mx-auto my-5 lg:my-0 lg:h-[425px] hover:shadow-lg  Electric shadow-xl rounded-xl'>
+                [...Array(3)].map(e => <div  className='lg:w-[509px] w-80 mx-auto my-5 lg:my-0 lg:h-[425px] hover:shadow-lg  Electric shadow-xl rounded-xl'>
                     <div className='lg:relative'>
                         <img src={img1} className='h-[220px] w-full' alt="" />
                         <div className='w-20 h-24 bg-white lg:absolute top-0 right-8 rounded-b-lg text-center items-center flex'>
